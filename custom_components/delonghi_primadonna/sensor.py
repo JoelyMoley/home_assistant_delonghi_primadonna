@@ -257,7 +257,7 @@ class DelongiPrimadonnaStatisticsSensor(
         """Fetch new state data for the sensor."""
         # Simple update logic: request stats every update cycle
         # In a real scenario you might want to throttle this
-        if self.device.connected:
+        if self.device.connected and self.device.switches.is_on:
             # Refresh stats around our parameter ID
             # Requesting chunk of 10 starting from base 100 for now
             # as that covers most counters
