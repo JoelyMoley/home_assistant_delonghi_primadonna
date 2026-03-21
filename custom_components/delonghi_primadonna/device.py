@@ -775,6 +775,9 @@ class DelongiPrimadonna:
             # Update at most once every 60 seconds
             if current_time - self._last_stats_request < 60:
                 return
+            # Don't request statistics when machine is off
+            if not self.switches.is_on:
+                return
 
             self._last_stats_request = current_time
             # Request parameter range for maintenance counters
